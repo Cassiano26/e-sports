@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Montserrat } from 'next/font/google'
+import { NavBar } from "../items/navbar";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -18,7 +19,8 @@ export default function RootLayout({
         className={`antialiased`}
       >
         <div className="w-[1728px] ml-auto mr-auto">
-        {children}
+          <NavBar />
+          {children}
         </div>
       </body>
     </html>
