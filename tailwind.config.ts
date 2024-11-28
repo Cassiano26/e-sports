@@ -25,7 +25,7 @@ export default {
         }
       },
       fontFamily: {
-        'main': ['--font-montserrat', 'ui-serif']
+        'main': ['var(--font-montserrat)']
       },
     },
   },
