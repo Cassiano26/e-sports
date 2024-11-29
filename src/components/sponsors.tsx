@@ -9,9 +9,9 @@ import locoLogo from '@/assets/locoLogo.svg'
 
 export function Sponsors() {
   return (
-    <div className='relative bg-primary-80 h-[1000px]'>
-      <div className='absolute z-20 bg-gradient-to-r from-primary-80 to-primary-11 w-full h-[1000px]'></div>
-      <div className='absolute z-10 bg-primary-12 w-full h-[1000px]'></div>
+    <div className='relative bg-primary-80 h-[776px]'>
+      <div className='absolute z-20 bg-gradient-to-r from-primary-80 to-primary-11 w-full h-[776px]'></div>
+      <div className='absolute z-10 bg-primary-12 w-full h-[776px]'></div>
       <Image alt='' src={SponsorsImage} className='absolute z-0 -mt-28 grayscale' />
       <div className='flex flex-col gap-12 absolute z-30 top-[106px] left-[168px] w-[554px]'>
         <h2 className='font-medium text-4xl text-white uppercase'>Lorem ipsum</h2>
