@@ -8,6 +8,7 @@ import valorantImage from '@/assets/valorant.png'
 import callOfDuttyImage from '@/assets/callOfDutyImage.png'
 import battleImage from '@/assets/battleImage.png'
 import counterStrike from '@/assets/cauterStrikeImage.svg'
+import tournamentFormatImage from '@/assets/tournamentFormatImage.svg'
 import { type CarouselApi } from "@/components/ui/carousel"
 import { useEffect, useState } from 'react'
 
@@ -48,31 +49,17 @@ export function AvailableEsports() {
       <div className='relative z-10 ml-auto mr-auto p-14 flex flex-col gap-10 items-center top-20 w-[1516px] rounded-[40px] bg-gradient-to-b from-primary-50 to-primary-14'>
         <h1 className='uppercase text-white font-semibold text-5xl'>available esports</h1>
         <div className='w-[1170px]'>
-          <Carousel 
+          <Carousel
             setApi={setApi}
             opts={{
               align: "center",
               loop: true,
-              dragFree: true
+              dragFree: false,
+
             }} 
-            className="w-full"
+            className="w-full select-none cursor-default"
           >
             <CarouselContent className="-ml-1 h-[400px]">
-              {/* <CarouselItem className="pl-1 basis-60 mt-auto mb-auto -mr-20">
-                <Image alt='' src={counterStrike} height={240} width={240} />
-              </CarouselItem>
-              <CarouselItem className="pl-1 basis-80 mt-auto mb-auto -mr-20">
-                <Image alt='' src={battleImage} height={320} width={320} />
-              </CarouselItem>
-              <CarouselItem className="pl-1 basis-96">
-                <Image alt='' src={valorantImage} height={400} width={400} />
-              </CarouselItem>
-              <CarouselItem className="pl-1 basis-80 mt-auto mb-auto -ml-20 -z-10">
-                <Image alt='' src={callOfDuttyImage} height={320} width={320} />
-              </CarouselItem>
-              <CarouselItem className="pl-1 basis-60 mt-auto mb-auto -ml-20 -z-20">
-                <Image alt='' src={fifaImage} height={240} width={240} />
-              </CarouselItem> */}
               <CarouselItem key={1} className={`relative flex justify-center basis-1/5 ${
                   current === 6 ? '-z-20':
                   ''
@@ -202,12 +189,15 @@ export function AvailableEsports() {
                 </div>
               </CarouselItem>
             </CarouselContent>
-            <CarouselPrevious className='bg-transparent text-white h-16 w-16 border-4'/>
+            <CarouselPrevious className='bg-transparent text-white h-16 w-16 border-4 [_svg]:h-16 [_svg]:w-16 ' />
             <CarouselNext className='bg-transparent text-white h-16 w-16 border-4'/>
           </Carousel>
-          </div>
+        </div>
       </div>
-      
+      <div className='relative flex flex-col items-center z-10 mt-[164px] gap-20'>
+        <h1 className='uppercase font-semibold text-5xl text-white'>tournament format</h1>
+        <Image alt='' src={tournamentFormatImage} />
+      </div>
     </div>
   )
 }
