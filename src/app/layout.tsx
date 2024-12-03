@@ -18,7 +18,7 @@ export default function RootLayout({
       <body
         className={`antialiased`}
       >
-        <div className="w-[1728px] ml-auto mr-auto">
+        <div className="w-[1728px] ml-auto mr-auto font-main">
           <NavBar />
           {children}
         </div>
