@@ -14,4 +14,9 @@ export const POST_QUERY =
 
 export const HEADER_QUERY = defineQuery(`*[_type == "headerComponent"][0]{logoImage, menuItems, buttonText}`)
 
-export const HOME_PAGE_QUERY = defineQuery(`*[_type == "homePage"][0]{heroSection[0], sponsorsSection, availableSportsSection}`)
+export const HOME_PAGE_QUERY = defineQuery(`*[_type == "pages" && slug.current == "home" ][0]{slug, sponsorsSection, availableSportsSection, heroSection}`)
+
+export const PAGE_QUERY =
+  defineQuery(`*[_type == "pages" && slug.current == $slug][0]{
+  slug, sponsorsSection, availableSportsSection, heroSection
+}`)

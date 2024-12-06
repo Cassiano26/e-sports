@@ -11,11 +11,33 @@ import counterStrike from '@/assets/cauterStrikeImage.svg'
 import tournamentFormatImage from '@/assets/tournamentFormatImage.svg'
 import { type CarouselApi } from "@/components/ui/carousel"
 import { useEffect, useState } from 'react'
+import { internalGroqTypeReferenceTo, SanityImageCrop, SanityImageHotspot } from '../../sanity.types'
+import { urlFor } from '@/sanity/lib/image'
 
-export function AvailableEsports() {
+type availableEsportsType = {
+  items: [
+    {
+      asset: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    }
+  ]
+}
+
+export function AvailableEsports( { items }: availableEsportsType) {
+
+  console.log(items[0].asset._ref)
+
   const styleItems = [
-    "h-[240px] w-[240px] top-[80px]",
-    "h-[320px] w-[320px] top-[40px]",
+    "h-[240px] w-[240px]",
+    "h-[320px] w-[320px]",
     "h-[400px] w-[400px]",
     "hidden"
     ]
@@ -60,13 +82,13 @@ export function AvailableEsports() {
             className="w-full select-none cursor-default"
           >
             <CarouselContent className="-ml-1 h-[400px]">
-              <CarouselItem key={1} className={`relative flex justify-center basis-1/5 ${
+              <CarouselItem key={1} className={`relative flex justify-center basis-1/5 items-center ${
                   current === 6 ? '-z-20':
                   ''
                   }`}
                 >
                 {/* <Image alt='' src={counterStrike} /> */}
-                <div className={`absolute transition-all rounded-3xl ${
+                <div className={`absolute transition-all duration-200 rounded-3xl overflow-hidden ${
                   current === 1 ? styleItems[2]:
                   current === 2 ? styleItems[1]:
                   current === 3 ? styleItems[0]:
@@ -75,16 +97,16 @@ export function AvailableEsports() {
                   current === 4 ? styleItems[3]:
                   current === 5 ? styleItems[3]:
                   ''}`}>
-                  <Image alt='' src={valorantImage} />
+                  <Image alt='' src={urlFor(items[0].asset._ref).url()} fill={true}/>
                 </div>
               </CarouselItem>
-              <CarouselItem key={2} className={`relative flex justify-center basis-1/5 ${
+              <CarouselItem key={2} className={`relative flex justify-center basis-1/5 items-center ${
                   current === 1 ? '-z-10':
                   current === 7 ? '-z-20':
                   ''
                   }`}>
                 {/* <Image alt='' src={battleImage} /> */}
-                <div className={`absolute transition-all rounded-3xl ${
+                <div className={`absolute transition-all duration-200 rounded-3xl overflow-hidden ${
                   current === 2 ? styleItems[2]:
                   current === 3 ? styleItems[1]:
                   current === 4 ? styleItems[0]:
@@ -93,15 +115,15 @@ export function AvailableEsports() {
                   current === 5 ? styleItems[3]:
                   current === 6 ? styleItems[3]:
                   ''}`}>
-                  <Image alt='' src={battleImage} fill={true}/>
+                  <Image alt='' src={urlFor(items[1].asset._ref).url()} fill={true}/>
                 </div>
               </CarouselItem>
-              <CarouselItem key={3} className={`relative flex justify-center basis-1/5 ${
+              <CarouselItem key={3} className={`relative flex justify-center basis-1/5 items-center ${
                   current === 1 ? '-z-20':
                   current === 2 ? '-z-10':                  
                   ''
                   }`}>
-                <div className={`absolute transition-all rounded-3xl ${
+                <div className={`absolute transition-all duration-200 rounded-3xl overflow-hidden ${
                   current === 3 ? styleItems[2]:
                   current === 4 ? styleItems[1]:
                   current === 5 ? styleItems[0]:
@@ -110,16 +132,16 @@ export function AvailableEsports() {
                   current === 6 ? styleItems[3]:
                   current === 7 ? styleItems[3]:
                   ''}`}>
-                  <Image alt='' src={fifaImage} fill={true} />
+                  <Image alt='' src={urlFor(items[2].asset._ref).url()} fill={true}/>
                 </div>
               </CarouselItem>
-              <CarouselItem key={4} className={`relative flex justify-center basis-1/5 ${
+              <CarouselItem key={4} className={`relative flex justify-center basis-1/5 items-center ${
                 current === 3 ? '-z-10':
                 current === 2 ? '-z-20':
                 ''
               }`}>
                 {/* <Image alt='' src={fifaImage} /> */}
-                <div className={`absolute transition-all rounded-3xl ${
+                <div className={`absolute transition-all duration-200 rounded-3xl overflow-hidden ${
                   current === 4 ? styleItems[2]:
                   current === 5 ? styleItems[1]:
                   current === 6 ? styleItems[0]:
@@ -128,16 +150,16 @@ export function AvailableEsports() {
                   current === 7 ? styleItems[3]:
                   current === 1 ? styleItems[3]:
                   ''}`}>
-                  <Image alt='' src={counterStrike} fill={true} />
+                  <Image alt='' src={urlFor(items[3].asset._ref).url()} fill={true}/>
                 </div>
               </CarouselItem>
-              <CarouselItem key={5} className={`relative flex justify-center basis-1/5 ${
+              <CarouselItem key={5} className={`relative flex justify-center basis-1/5 items-center ${
                 current === 3 ? '-z-20':
                 current === 4 ? '-z-10':
                 ''
               }`}>
                 {/* <Image alt='' src={callOfDuttyImage} /> */}
-                <div className={`absolute transition-all rounded-3xl ${
+                <div className={`absolute transition-all duration-200 rounded-3xl overflow-hidden ${
                   current === 5 ? styleItems[2]:
                   current === 6 ? styleItems[1]:
                   current === 7 ? styleItems[0]:
@@ -146,17 +168,17 @@ export function AvailableEsports() {
                   current === 1 ? styleItems[3]:
                   current === 2 ? styleItems[3]:
                   ''}`}>
-                  <Image alt='' src={callOfDuttyImage} fill={true}/>
+                  <Image alt='' src={urlFor(items[4].asset._ref).url()} fill={true}/>
                 </div>
               </CarouselItem>
-              <CarouselItem key={6} className={`relative flex justify-center basis-1/5 ${
+              <CarouselItem key={6} className={`relative flex justify-center basis-1/5 items-center ${
                   current === 1 ? '-z-10':
                   current === 4 ? '-z-20':
                   current === 5 ? '-z-10':
                   ''
                   }`}>
                 {/* <Image alt='' src={counterStrike} /> */}
-                <div className={`absolute transition-all rounded-3xl ${
+                <div className={`absolute transition-all duration-200 rounded-3xl overflow-hidden ${
                   current === 6 ? styleItems[2]:
                   current === 7 ? styleItems[1]:
                   current === 1 ? styleItems[0]:
@@ -165,10 +187,10 @@ export function AvailableEsports() {
                   current === 2 ? styleItems[3]:
                   current === 3 ? styleItems[3]:
                   ''}`}>
-                  <Image alt='' src={valorantImage} fill={true}/>
+                  <Image alt='' src={urlFor(items[0].asset._ref).url()} fill={true}/>
                 </div>
               </CarouselItem>
-              <CarouselItem key={7} className={`relative flex justify-center basis-1/5 ${
+              <CarouselItem key={7} className={`relative flex justify-center basis-1/5 items-center ${
                   current === 1 ? '-z-10':
                   current === 2 ? '-z-10':
                   current === 5 ? '-z-20':
@@ -176,7 +198,7 @@ export function AvailableEsports() {
                   ''
                   }`}>
                 {/* <Image alt='' src={battleImage} /> */}
-                <div className={`absolute transition-all rounded-3xl ${
+                <div className={`absolute transition-all duration-200 rounded-3xl overflow-hidden ${
                   current === 7 ? styleItems[2]:
                   current === 1 ? styleItems[1]:
                   current === 2 ? styleItems[0]:
@@ -185,7 +207,7 @@ export function AvailableEsports() {
                   current === 3 ? styleItems[3]:
                   current === 4 ? styleItems[3]:
                   ''}`}>
-                  <Image alt='' src={fifaImage} fill={true} />
+                  <Image alt='' src={urlFor(items[1].asset._ref).url()} fill={true}/>
                 </div>
               </CarouselItem>
             </CarouselContent>

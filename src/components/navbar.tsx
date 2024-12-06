@@ -27,11 +27,6 @@ type navBarProps = {
 
 export function NavBar({items}: NonNullable<navBarProps>) {
   
-  if (items.buttonText) {
-    console.log(items.buttonText)
-  }
-
-  
   return (
     <nav className="bg-primary-90 h-[116px] flex justify-between items-center pl-24 pr-24">
       <div>
