@@ -3,11 +3,6 @@
 import backgroundImage from '@/assets/availableImage.svg'
 import Image from 'next/image'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './ui/carousel'
-import fifaImage from '@/assets/fifaImage.svg'
-import valorantImage from '@/assets/valorant.png'
-import callOfDuttyImage from '@/assets/callOfDutyImage.png'
-import battleImage from '@/assets/battleImage.png'
-import counterStrike from '@/assets/cauterStrikeImage.svg'
 import tournamentFormatImage from '@/assets/tournamentFormatImage.svg'
 import { type CarouselApi } from "@/components/ui/carousel"
 import { useEffect, useState } from 'react'
@@ -54,15 +49,19 @@ export function AvailableEsports( { items }: availableEsportsType) {
  
     api.on("select", () => {
       setCurrent(api.selectedScrollSnap() + 1)
+      console.log(api.selectedScrollSnap() + 1)
+    })
+
+    api.on('slidesInView', () => {
+      
+      const truck = api.slidesInView().map((item) => {
+        item = item + 1
+        return item
+      })
+      console.log(truck)
     })
     
   }, [api])
-
-  useEffect(() => {
-    
-
-
-  }, [current])
 
 
   return (

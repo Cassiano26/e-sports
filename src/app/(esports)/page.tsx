@@ -17,10 +17,15 @@ export default async function Page() {
 
   return (
     <div className="w-[1728px] ml-auto mr-auto">
-      <Sponsors heroSection={homeData.heroSection} sponsorsItems={homeData.sponsorsSection} />
+      {homeData.heroSection && (
+        <Sponsors heroSection={homeData.heroSection} sponsorsItems={homeData.sponsorsSection} />
+      )}
+      
       {homeData.availableSportsSection && (
         <AvailableEsports items={homeData.availableSportsSection} />
       )}
+
+      <BrowseTournament />
     </div>
   );
 }

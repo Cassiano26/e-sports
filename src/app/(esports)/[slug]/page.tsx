@@ -22,7 +22,9 @@ export default async function Page({
 
   return (
     <div className="w-[1728px] ml-auto mr-auto">
-      <AvailableEsports items={page.availableSportsSection}/>
+      {
+       page.availableSportsSection && (<AvailableEsports items={page.availableSportsSection}/>)
+      }
     </div>
     
   );
